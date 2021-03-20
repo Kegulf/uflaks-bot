@@ -11,7 +11,7 @@ import {
 
   // Server-info commands
   ValheimCommand,
-  
+
   // Frisbee commands
   WeatherCommand,
 } from '../commands';
@@ -24,7 +24,6 @@ export class UlfaksbotClient extends CommandoClient {
 
     this.setRegistryDefaults();
     this.setEventListeners();
-    
   }
 
   setRegistryDefaults(): void {
@@ -60,13 +59,13 @@ export class UlfaksbotClient extends CommandoClient {
     this.on('messageDelete', onMessageDelete);
   }
   setAnnoyingTimers(): void {
-    // robin 
-    const generalChannel = this.channels.cache.get('472482611084918786')
+    // robin
+    const generalChannel = this.channels.cache.get('472482611084918786');
     // console.log(this.channels.cache.get('472482611084918786'));
     // (generalChannel as TextChannel).send('@Vital#2956 you dick')
   }
 
-  isAuthorMe(author: User | null) {
-    return author?.id === this.user?.id; 
+  isAuthorMe(author: User | null): boolean {
+    return author?.id === this.user?.id;
   }
 }
