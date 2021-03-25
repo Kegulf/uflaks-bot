@@ -45,8 +45,14 @@ export class QuotesApiProxy {
   }
 
   static async getQuoteOfDay(category?: string): Promise<Quote | undefined> {
-    const response = await fetch(category ? `${this.baseUrl}qod?category=${category}&language=en` : `${this.baseUrl}qod?language=en`);
+    const response = await fetch(
+      category
+        ? `${this.baseUrl}qod?category=${category}&language=en`
+        : `${this.baseUrl}qod?language=en`
+    );
+    
     const json: QuotesApiResponseBody<QuoteOfDay> = await response.json();
+    
     if (json.error) throw new HTTPError(json.error.message, 'HTTPError', json.error.code, 'GET', 'QuotesApiProxy');
 
     const { success: { total }, contents: { quotes } } = json;

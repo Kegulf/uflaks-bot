@@ -55,7 +55,7 @@ export class UlfaksbotClient extends CommandoClient {
       this.setAnnoyingTimers();
     });
 
-    this.on('message', (msg) => !this.isAuthorMe(msg.author) && onMessage(msg));
+    this.on('message', (msg) => onMessage(msg, this.isAuthorMe(msg.author)));
     this.on('messageDelete', onMessageDelete);
   }
   setAnnoyingTimers(): void {
