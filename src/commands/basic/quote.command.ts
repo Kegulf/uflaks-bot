@@ -34,7 +34,7 @@ export class QuoteCommand extends Command {
       if (error instanceof HTTPError) {
         if (error.code === 429) return msg.say(error.message);
       }
-
+      /* eslint-disable-next-line no-console */
       console.error(error);
     }
 
@@ -42,7 +42,11 @@ export class QuoteCommand extends Command {
   }
 
   private formatMessageEmbed(quoteData: Quote): MessageEmbed {
-    const { author, quote, image, attribution: { title, thumbnail, href, footer } } = quoteData;
+    const {
+      author, quote, image, attribution: {
+        title, thumbnail, href, footer,
+      },
+    } = quoteData;
     const embed = new MessageEmbed();
     embed.setTitle(title);
     embed.setURL(href);

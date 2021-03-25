@@ -37,6 +37,7 @@ export class QuotesApiProxy {
   public static categories: string[] = ['inspire', 'management', 'sports', 'life', 'funny', 'love', 'art', 'students'];
 
   private static baseUrl = 'https://quotes.rest/';
+
   private static attribution = {
     title: 'They Said So®',
     thumbnail: 'https://theysaidso.com/branding/theysaidso.png',
@@ -45,8 +46,14 @@ export class QuotesApiProxy {
   }
 
   static async getQuoteOfDay(category?: string): Promise<Quote | undefined> {
-    const response = await fetch(category ? `${this.baseUrl}qod?category=${category}&language=en` : `${this.baseUrl}qod?language=en`);
+    const response = await fetch(
+      category
+        ? `${this.baseUrl}qod?category=${category}&language=en`
+        : `${this.baseUrl}qod?language=en`,
+    );
+
     const json: QuotesApiResponseBody<QuoteOfDay> = await response.json();
+
     if (json.error) throw new HTTPError(json.error.message, 'HTTPError', json.error.code, 'GET', 'QuotesApiProxy');
 
     const { success: { total }, contents: { quotes } } = json;
@@ -56,6 +63,8 @@ export class QuotesApiProxy {
         attribution: this.attribution,
       };
     }
+
+    return undefined;
   }
 
   static async getCategories(): Promise<string[]> {

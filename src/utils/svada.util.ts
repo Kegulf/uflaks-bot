@@ -1,3 +1,3 @@
 import svada from 'svada';
 
-export const getSvada = svada;
+export const getSvada: any = () => svada();

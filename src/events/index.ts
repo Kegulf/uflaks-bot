@@ -1,13 +1,15 @@
 import { Message, PartialMessage } from 'discord.js';
 
-export const onMessage = (msg: Message): void => {
+export const onMessage = (msg: Message, isAuthorMe: boolean): void => {
   const { content } = msg;
 
-  const isTired = content.toLowerCase().indexOf('trøtt') !== -1;
-  const isUflaks = content.toLowerCase().indexOf('uflaks') !== -1;
+  if (!isAuthorMe) {
+    const isTired = content.toLowerCase().indexOf('trøtt') !== -1;
+    const isUflaks = content.toLowerCase().indexOf('uflaks') !== -1;
 
-  if (isTired) msg.channel.send('Ska du ha nokke KAFFI? :coffee:');
-  if (isUflaks) msg.channel.send('Ja det vart Uflaks! :panda_face:');
+    if (isTired) msg.channel.send('Ska du ha nokke KAFFI? :coffee:');
+    if (isUflaks) msg.channel.send('Ja det vart Uflaks! :panda_face:');
+  }
 };
 
 export const onMessageDelete = (msg: Message | PartialMessage): void => {
