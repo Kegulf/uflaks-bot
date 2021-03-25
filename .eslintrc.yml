@@ -3,9 +3,12 @@ env:
   es2020: true
 extends:
   - eslint:recommended
+  - airbnb
   - plugin:jest/recommended
   - plugin:@typescript-eslint/recommended
   - plugin:@typescript-eslint/eslint-recommended
+  - plugin:import/errors
+  - plugin:import/typescript
 parser: '@typescript-eslint/parser'
 parserOptions:
   ecmaVersion: 11
@@ -14,32 +17,9 @@ plugins:
   - '@typescript-eslint'
   - 'jest'
 rules:
-  '@typescript-eslint/no-inferrable-types': 0
-  '@typescript-eslint/indent': 
-    - error
-    - 2
-    - 'SwitchCase': 1
-  'arrow-spacing': error
-  'comma-dangle':
-    - warn
-    - always-multiline
-  'eol-last':
-    - error
-    - always
-  'keyword-spacing': error
-  'linebreak-style': 
-    - error
-    - unix
-  'no-multiple-empty-lines':
-    - error
-    - 'max': 2
-      'maxBOF': 0
-      'maxEOF': 0
-  'no-trailing-spaces': error
-  'prefer-const': error
-  'quotes':
-    - error
-    - single
-  'semi': 
-    - error
-    - always
+  'camelcase': 0
+  'import/prefer-default-export': 0
+  '@typescript-eslint/no-explicit-any': 0
+  'import/extensions': 0
+  'class-methods-use-this': 0
+  'no-useless-escape': 0

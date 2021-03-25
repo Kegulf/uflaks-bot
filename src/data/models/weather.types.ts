@@ -5,7 +5,7 @@ export type ValidPlace = {
 
 export type ValidPlaces = {
   [key: string]: ValidPlace,
-} 
+}
 
 export type WeatherGeometry = {
   type: string,
@@ -28,12 +28,14 @@ export type WeatherMetaData = {
 }
 
 export type FullWeatherDetails = {
+  time_to_display: string,
   air_pressure_at_sea_level: number,
   air_temperature: number,
   cloud_area_fraction: number,
   relative_humidity: number,
   wind_from_direction: number,
   wind_speed: number,
+  precipitation_amount: number,
 }
 
 export type NextXHoursForecast = {

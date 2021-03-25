@@ -3,12 +3,7 @@ import { Message, PartialMessage } from 'discord.js';
 export const onMessage = (msg: Message, isAuthorMe: boolean): void => {
   const { content } = msg;
 
-  console.log(content);
-
-
-
-
-  if (!isAuthorMe) { 
+  if (!isAuthorMe) {
     const isTired = content.toLowerCase().indexOf('trøtt') !== -1;
     const isUflaks = content.toLowerCase().indexOf('uflaks') !== -1;
 

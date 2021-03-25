@@ -8,19 +8,19 @@ import {
   WeatherApiResponseBody,
 } from '../models/weather.types';
 
-
 export class WeatherApiProxy {
   public static validPlaces: ValidPlaces = {
-    'badevika': { lat: '60.514045', lon: '5.244073' },
-    'flaktveit': { lat: '60.463289', lon: '5.362458' },
-    'haltejohansvika': { lat: '60.508001', lon: '5.230166' },
-    'hetlevik': { lat: '60.347773', lon: '5.224741' },
-    'herdla': { lat: '60.576015', lon: '4.949677' },
-    'lynghaugparken': { lat: '60.355218', lon: '5.293409' },
-    'tellevik': { lat: '60.518744', lon: '5.285010' },
+    badevika: { lat: '60.514045', lon: '5.244073' },
+    flaktveit: { lat: '60.463289', lon: '5.362458' },
+    haltejohansvika: { lat: '60.508001', lon: '5.230166' },
+    hetlevik: { lat: '60.347773', lon: '5.224741' },
+    herdla: { lat: '60.576015', lon: '4.949677' },
+    lynghaugparken: { lat: '60.355218', lon: '5.293409' },
+    tellevik: { lat: '60.518744', lon: '5.285010' },
   };
-  
+
   private static baseUrl = 'https://api.met.no/weatherapi/locationforecast/2.0';
+
   private static attribution = {
     title: 'Værdata fra Yr',
     thumbnail: 'https://theysaidso.com/branding/theysaidso.png',
@@ -29,7 +29,7 @@ export class WeatherApiProxy {
   }
 
   static async getWeatherData(
-    place: ValidPlace = { lat: '50.5', lon: '0' }
+    place: ValidPlace = { lat: '50.5', lon: '0' },
   ): Promise<{ meta: WeatherMetaData, timeseries: WeatherTimeEntry[] }> {
     const { GITHUB_REPO, APP_VERSION, AUTHOR_EMAIL } = process.env;
 

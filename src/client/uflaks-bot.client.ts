@@ -1,4 +1,4 @@
-import { User } from 'discord.js';
+import { GuildChannel, User } from 'discord.js';
 import { CommandoClient, CommandoClientOptions } from 'discord.js-commando';
 
 import { commandGroups } from '../commands/commandGroups';
@@ -16,9 +16,7 @@ import {
   WeatherCommand,
 } from '../commands';
 
-
 export class UlfaksbotClient extends CommandoClient {
-
   constructor(options?: CommandoClientOptions) {
     super(options);
 
@@ -51,6 +49,7 @@ export class UlfaksbotClient extends CommandoClient {
   */
   setEventListeners(): void {
     this.on('ready', () => {
+      /* eslint-disable-next-line no-console */
       console.log(`Logged in to: ${this.guilds.cache.array().join(', ')}`);
       this.setAnnoyingTimers();
     });
@@ -58,9 +57,12 @@ export class UlfaksbotClient extends CommandoClient {
     this.on('message', (msg) => onMessage(msg, this.isAuthorMe(msg.author)));
     this.on('messageDelete', onMessageDelete);
   }
+
   setAnnoyingTimers(): void {
     // robin
-    const generalChannel = this.channels.cache.get('472482611084918786');
+    const generalChannel = this.channels.cache.get('472482611084918786') as GuildChannel;
+
+    console.log(generalChannel?.name);
     // console.log(this.channels.cache.get('472482611084918786'));
     // (generalChannel as TextChannel).send('@Vital#2956 you dick')
   }
